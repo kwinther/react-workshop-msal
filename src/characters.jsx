@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Card, Button, Container, CardColumns } from "react-bootstrap";
+import { authProvider } from "./authProvider";
+
 export default class Characters extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
       isLoading: false
@@ -11,6 +12,17 @@ export default class Characters extends Component {
   }
 
   componentDidMount() {
+    console.log(authProvider);
+    // var headers = new Headers();
+    // var bear = window.msal.acquireTokenSilent({scopes: ["https://norconsult365.onmicrosoft.com/ReactREST/user_impersonation"]});
+    // var bearer = "Bearer " + access_token;
+    // headers.append("Authorization", bearer);
+    // var options = {
+    //      method: "GET",
+    //      headers: headers
+    // };
+    // var graphEndpoint = "https://graph.microsoft.com/v1.0/me";
+
     this.setState({ isLoading: true });
     fetch("https://rickandmortyapi.com/api/character/")
       .then(response => response.json())
